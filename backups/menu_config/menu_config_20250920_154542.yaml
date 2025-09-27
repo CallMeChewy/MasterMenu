@@ -1,0 +1,55 @@
+tabs:
+- id: launcher
+  name: Launcher
+  categories:
+  - id: env_tools
+    name: Environment & Scaffolding
+    items:
+    - git-init
+  - id: project_automation
+    name: Project Automation
+    items:
+    - new-proj
+    - backup-project
+    - delete-workflows
+  - id: ai_ops
+    name: AI & Ollama Ops
+    items:
+    - ai-services
+  - id: search_nav
+    name: Search & Navigation
+    items:
+    - ff
+  - id: system_utils
+    name: System & Utilities
+    items:
+    - timer
+    - nudge
+    - nvidia
+    - ghauth
+  - id: UnAssigned
+    name: UnAssigned
+    items:
+    - ai-project
+    - ai-env
+    - py-project
+    - venv-create
+  layout:
+    style: grid
+    columns: 3
+- id: details
+  name: Details
+  categories: []
+  template: tool-detail
+- id: maintenance
+  name: Maintenance
+  categories: []
+  locked: true
+metadata:
+  version: 1
+  last_updated_by: codex
+  notes: 'Tabs beyond the launcher are rendered dynamically. Maintenance tools
+
+    update this file when categories or ordering changes.
+
+    '

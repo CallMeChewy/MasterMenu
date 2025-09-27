@@ -1,0 +1,18 @@
+id: timer
+name: Desktop Reminder Timer
+synopsis: Launch a Tk reminder that plays audio and prompts at a configurable interval.
+command: ["bash", "./run.sh"]
+cwd: .
+env:
+  PYTHONUNBUFFERED: "1"
+icon: icon.png
+category: system_utils
+notes: |
+  Launches `reminder_app.py` in the background. Requires the `playsound`
+  package and an accessible audio file (defaults to `Do Something.wav` inside
+  the tool directory). Create a local virtualenv if you want to isolate
+  dependencies.
+venv:
+  path: .venv
+  auto_create: false
+tags: [reminder, productivity]

@@ -1,0 +1,25 @@
+id: ai-project
+name: Bootstrap AI Project
+synopsis: Scaffold a desktop AI project with PySide6 UI boilerplate and LangChain
+  dependencies.
+command:
+- bash
+- ./run.sh
+cwd: .
+env: {}
+icon: icon.png
+category: env_tools
+notes: 'Prompts for a project name and parent directory, then scaffolds `src/`,
+
+  `tests/`, and `docs/` folders, seeds requirements/gitignore files, adds a
+
+  PySide6 main window stub, creates a virtualenv with core AI packages, and
+
+  initializes a Git repository on the main branch.'
+venv:
+  path: .venv
+  auto_create: false
+tags:
+- scaffold
+- python
+- project

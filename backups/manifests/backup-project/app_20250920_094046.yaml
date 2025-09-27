@@ -1,0 +1,23 @@
+id: backup-project
+name: Project Backup
+synopsis: Copy a selected project directory into Desktop/Projects_Backup with a timestamp
+  suffix.
+command:
+- bash
+- ./run.sh
+cwd: .
+env: {}
+icon: icon.png
+category: project_automation
+notes: 'Prompts for a source directory, then copies it into `~/Desktop/Projects_Backup`
+
+  with a timestamp suffix. A terminal window shows progress and confirms the
+
+  destination path on completion.'
+venv:
+  path: .venv
+  auto_create: false
+tags:
+- backup
+- shell
+- safety

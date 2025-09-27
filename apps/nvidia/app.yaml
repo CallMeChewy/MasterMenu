@@ -1,0 +1,21 @@
+id: nvidia
+name: GPU Monitor
+synopsis: Open a watch window that refreshes `nvidia-smi` every second.
+command:
+- bash
+- ./run.sh
+cwd: .
+env: {}
+icon: 1689147124Boat30.svg
+category: system_utils
+notes: 'Requires NVIDIA drivers and the `nvidia-smi` CLI. Opens `watch -n 1 nvidia-smi`
+
+  in a terminal so you can observe GPU utilisation and exit with Ctrl+C when finished.
+
+  Override the refresh cadence by exporting `NVIDIA_INTERVAL_SECONDS` before launch.'
+venv:
+  path: .venv
+  auto_create: false
+tags:
+- gpu
+- monitoring

@@ -1,0 +1,22 @@
+id: git-init
+name: Initialize Git Repo
+synopsis: Initialize a Git repository in a selected directory and create README/gitignore
+  stubs.
+command:
+- bash
+- ./run.sh
+cwd: .
+env: {}
+icon: icon.png
+category: env_tools
+notes: 'Prompts for the target directory, runs `git init`, switches the default branch
+
+  to `main`, and creates empty README.md/.gitignore files so the repository is
+
+  ready for the first commit.'
+venv:
+  path: .venv
+  auto_create: false
+tags:
+- git
+- setup

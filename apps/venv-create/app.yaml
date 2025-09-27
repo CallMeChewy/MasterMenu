@@ -1,0 +1,22 @@
+id: venv-create
+name: Create Virtualenv
+synopsis: Spin up a bare Python virtual environment in a selected directory.
+command:
+- bash
+- ./run.sh
+cwd: .
+env: {}
+icon: design-thinking.png
+category: env_tools
+notes: 'Prompts for a destination folder and optional environment name, then launches
+
+  a terminal to run `python -m venv` and `pip install --upgrade pip`. Perfect for
+
+  quick experiments where you want isolation but plan to choose packages later.'
+venv:
+  path: .venv
+  auto_create: false
+tags:
+- python
+- environment
+- setup

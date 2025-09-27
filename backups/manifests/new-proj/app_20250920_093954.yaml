@@ -1,0 +1,16 @@
+id: new-proj
+name: Launch Project Startup
+synopsis: Start the Project_Startup wizard to scaffold complex workspaces.
+command: ["bash", "./run.sh"]
+cwd: .
+env: {}
+icon: icon.png
+category: project_automation
+notes: |
+  Searches common locations for the Project_Startup repository (inside MasterMenu,
+  adjacent directories, or on the Desktop). If found, launches `python src/main.py`
+  in that folder and forwards any optional CLI arguments you provide.
+venv:
+  path: .venv
+  auto_create: false
+tags: [scaffold, gui, launcher]

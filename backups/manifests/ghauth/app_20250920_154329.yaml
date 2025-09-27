@@ -1,0 +1,16 @@
+id: ghauth
+name: GitHub CLI Login
+synopsis: Launch the `gh auth login` flow inside a terminal window.
+command: ["bash", "./run.sh"]
+cwd: .
+env: {}
+icon: icon.png
+category: system_utils
+notes: |
+  Opens a terminal and executes `gh auth login` so you can refresh credentials
+  without leaving the menu. Supports web, device, or token-based authentication
+  depending on how you respond to the CLI prompts.
+venv:
+  path: .venv
+  auto_create: false
+tags: [github, authentication]

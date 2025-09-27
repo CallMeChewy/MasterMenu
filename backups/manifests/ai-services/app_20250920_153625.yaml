@@ -1,0 +1,16 @@
+id: ai-services
+name: AI Services Status
+synopsis: Check whether the local Ollama daemon and API endpoint are available.
+command: ["bash", "./run.sh"]
+cwd: .
+env: {}
+icon: icon.png
+category: ai_ops
+notes: |
+  Runs simple health checks against the Ollama process and REST endpoint using
+  `pgrep` and `curl`. Output appears in a terminal window to keep the menu
+  responsive while you inspect the results.
+venv:
+  path: .venv
+  auto_create: false
+tags: [ollama, status, monitoring]

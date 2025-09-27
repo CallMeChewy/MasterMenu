@@ -1,0 +1,16 @@
+id: nudge
+name: Save State Nudge
+synopsis: Periodically reminds you to capture session notes, with a configurable interval.
+command: ["bash", "./run.sh"]
+cwd: .
+env: {}
+icon: icon.png
+category: system_utils
+notes: |
+  Prompts for the number of minutes between reminders (default 30) and runs a
+  simple loop in a terminal window. Close the terminal or press Ctrl+C to stop
+  the nudge cycle. Set `NUDGE_INTERVAL_MINUTES` in the environment to bypass the prompt.
+venv:
+  path: .venv
+  auto_create: false
+tags: [reminder, terminal, productivity]

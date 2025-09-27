@@ -1,0 +1,24 @@
+id: py-project
+name: Bootstrap Python Project
+synopsis: Generate a lightweight Python project skeleton with src/tests/docs folders.
+command:
+- bash
+- ./run.sh
+cwd: .
+env: {}
+icon: icon.svg
+category: env_tools
+notes: 'Prompts for a project name and parent directory, then creates the folder with
+
+  `src/`, `tests/`, and `docs/` subdirectories, README/requirements stubs, and
+
+  package initialisers. Handy for quick prototypes that do not need a prebuilt
+
+  virtualenv or AI dependencies.'
+venv:
+  path: .venv
+  auto_create: false
+tags:
+- scaffold
+- python
+- project

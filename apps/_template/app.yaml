@@ -1,0 +1,15 @@
+id: template-id
+name: Template Tool
+synopsis: Replace with a short description shown in the menu.
+command: ["bash", "./run.sh"]
+cwd: .
+env: {}
+icon: icon.png
+category: template-category
+notes: |
+  Expand on usage, arguments, or gotchas for this tool. Include storage behavior
+  and whether this tool ships a CLI wrapper in `bin/`.
+venv:
+  path: .venv
+  auto_create: false
+tags: []

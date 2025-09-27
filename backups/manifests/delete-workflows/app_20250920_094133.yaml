@@ -1,0 +1,16 @@
+id: delete-workflows
+name: Purge GitHub Workflow Runs
+synopsis: Delete all Actions workflow runs for a selected repository using the GitHub CLI.
+command: ["bash", "./run.sh"]
+cwd: .
+env: {}
+icon: icon.png
+category: project_automation
+notes: |
+  Prompts for an owner/repo slug, asks for confirmation, then iterates through
+  all workflow runs using the GitHub CLI and deletes them in batches. Requires
+  `gh` with appropriate permissions and an authenticated session.
+venv:
+  path: .venv
+  auto_create: false
+tags: [github, cleanup, automation]

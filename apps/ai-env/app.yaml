@@ -1,0 +1,25 @@
+id: ai-env
+name: AI Env Bootstrap
+synopsis: Create a Python virtualenv with PySide6 and LangChain tooling in a chosen
+  directory.
+command:
+- bash
+- ./run.sh
+cwd: .
+env: {}
+icon: analytics.png
+category: env_tools
+notes: 'Prompts for a target workspace and optional virtualenv name, then opens a
+
+  terminal to create/activate the environment and install PySide6, requests,
+
+  langchain-ollama, and langchain-core. Use when you need a ready-to-code AI
+
+  stack without scaffolding a full project.'
+venv:
+  path: .venv
+  auto_create: false
+tags:
+- python
+- environment
+- setup

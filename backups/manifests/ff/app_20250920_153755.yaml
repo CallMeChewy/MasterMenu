@@ -1,0 +1,15 @@
+id: ff
+name: Desktop Exact Finder
+synopsis: Search the Desktop hierarchy for files or folders with an exact name match.
+command: ["bash", "./run.sh"]
+cwd: .
+env: {}
+icon: icon.png
+category: search_nav
+notes: |
+  Prompts for a search term (via Zenity or a Tk fallback) and runs `find` over
+  the Desktop directory, printing exact-name matches in a terminal window.
+venv:
+  path: .venv
+  auto_create: false
+tags: [search, shell, productivity]
