@@ -32,6 +32,12 @@ tabs:
     name: Productivity
     items:
     - timer
+  - id: unassigned
+    name: Unassigned
+    items:
+    - finder
+    - pikapeek
+    - llm-tester
   - id: dangerous
     name: Dangerous
     items:

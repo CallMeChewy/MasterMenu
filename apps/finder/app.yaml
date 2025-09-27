@@ -1,0 +1,22 @@
+id: finder
+name: Finder Utility
+synopsis: Launch the Finder desktop search helper.
+command:
+- bash
+- ./run.sh
+cwd: .
+env: {}
+icon: icon.png
+category: unassigned
+notes: 'Executes `/home/herb/.pyenv/shims/python /home/herb/Desktop/Finder/Finder.py`
+
+  after switching into the Finder project directory. Keep the external project
+
+  updated with its dependencies.'
+venv:
+  path: .venv
+  auto_create: false
+tags:
+- search
+- utility
+- cli

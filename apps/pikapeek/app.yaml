@@ -1,0 +1,22 @@
+id: pikapeek
+name: PikaPeek Backup Explorer
+synopsis: Launch the PikaPeek Borg backup explorer.
+command:
+- bash
+- ./run.sh
+cwd: .
+env: {}
+icon: icon.png
+category: unassigned
+notes: 'Launches `/home/herb/Desktop/PikaPeek/Scripts/Launchers/run-backup-explorer.sh`
+
+  after switching to the PikaPeek project directory. Ensure the upstream project
+
+  remains available before using this launcher.'
+venv:
+  path: .venv
+  auto_create: false
+tags:
+- backup
+- borg
+- cli

@@ -103,7 +103,7 @@ fi
 
 APP_YAML="$TARGET_DIR/app.yaml"
 if [[ -f "$APP_YAML" ]]; then
-  python3 "$APP_YAML" "$TOOL_ID" "$TOOL_NAME" "$TOOL_SYNOPSIS" "$TOOL_CATEGORY" <<'PY'
+  python3 - "$APP_YAML" "$TOOL_ID" "$TOOL_NAME" "$TOOL_SYNOPSIS" "$TOOL_CATEGORY" <<'PY'
 import sys
 from pathlib import Path
 
@@ -130,7 +130,7 @@ fi
 
 README_MD="$TARGET_DIR/README.md"
 if [[ -f "$README_MD" ]]; then
-  python3 "$README_MD" "$TOOL_NAME" <<'PY'
+  python3 - "$README_MD" "$TOOL_NAME" <<'PY'
 import sys
 from pathlib import Path
 
@@ -151,8 +151,8 @@ if [[ $WITH_WRAPPER -eq 1 ]]; then
   cat <<WRAPPER > "$WRAPPER_PATH"
 #!/usr/bin/env bash
 set -euo pipefail
-EXEC_DIR="$(cd -- "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)/apps/$TOOL_ID"
-exec "${EXEC_DIR}/run.sh" "\$@"
+EXEC_DIR="\$(cd -- \"\$(dirname \"\${BASH_SOURCE[0]}\")\"/.. && pwd)/apps/$TOOL_ID"
+exec "\${EXEC_DIR}/run.sh" "\$@"
 WRAPPER
   chmod +x "$WRAPPER_PATH"
 fi

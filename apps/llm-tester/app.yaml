@@ -1,0 +1,22 @@
+id: llm-tester
+name: LLM Tester
+synopsis: Run the local LLM tester interface.
+command:
+- bash
+- ./run.sh
+cwd: .
+env: {}
+icon: icon.svg
+category: unassigned
+notes: 'Runs `/home/herb/.pyenv/shims/python /home/herb/Desktop/LLM-Tester/LLM-Tester.py`
+
+  (preferably in a new terminal window) after changing into the LLM-Tester project
+
+  directory. Make sure the external project remains installed and configured.'
+venv:
+  path: .venv
+  auto_create: false
+tags:
+- llm
+- testing
+- cli
