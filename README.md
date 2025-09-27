@@ -5,45 +5,46 @@ MasterMenu consolidates local helper scripts and mini-apps into a PySide6 deskto
 ## Quick Start
 
 1. **Install dependencies**
-   
    ```bash
    cd MasterMenu
    python -m venv .venv
    source .venv/bin/activate
    pip install -r requirements.txt
    ```
-2. **Run the menu**
-   
+2. **Launch the UI**
    ```bash
-   python src/main.py
+   ./launch_mastermenu.sh
    ```
-3. Launch tools from the **Launcher** tab. Select an item to preview details or hit **Maintenance Mode** in the toolbar to add/edit/reorder entries directly.
+   The script prefers `.venv/bin/python`, falls back to `python3`, and surfaces desktop notifications if startup fails.
+3. Explore tools from the **Launcher** tab. Toggle **Maintenance Mode** to edit metadata, categories, and ordering in-app.
 
 ## Features
 
-- YAML-powered configuration (`menu_config.yaml` + `apps/<tool>/app.yaml`) for predictable category/order management.
-- In-app maintenance: create new tools from the template scaffold, edit metadata, move tools between categories, tweak launch commands, or change icons (placeholder art ships by default).
-- Tool directories live under `apps/`, each with its own README, launcher script, and optional `.venv/` for isolation.
-- Automatic backups of manifests/configs whenever maintenance actions save changes (see `backups/`).
+- YAML-driven manifests (`apps/<tool>/app.yaml`, `menu_config.yaml`) keep ordering predictable and editable in code or UI.
+- Standardised tool scaffold (`apps/_template`) with symlink-safe `run.sh`, storage conventions, and README placeholders.
+- Automation helpers under `scripts/`: `new-tool.sh` clones the template, `update-wrappers.sh` regenerates PATH wrappers, and `doctor.sh` validates manifests/run scripts.
+- CLI wrappers in `bin/` mirror menu tools when tagged `cli`, so a subset of utilities can be invoked directly from any shell.
+- Automatic backups of manifests/configs (`backups/`) and per-run work directories under `~/.local/share/mastermenu` (trim via `bin/mastermenu-clean`).
 
 ## Structure
 
 ```
 MasterMenu/
-├── apps/               # Individual tool folders + template scaffold
-├── assets/             # Shared icons and placeholders
-├── menu_config.yaml    # Tab/category definitions for the launcher UI
-├── requirements.txt    # PySide6 + PyYAML dependencies
-└── src/                # PySide6 application code
+├── apps/                # Individual tool folders + `_template`
+├── assets/              # Shared icons and placeholders
+├── bin/                 # Generated CLI wrappers + maintenance utilities
+├── scripts/             # Repo tooling (doctor, scaffolding, wrapper sync)
+├── backups/             # Manifest/config snapshots
+├── menu_config.yaml     # Tab/category definitions for the launcher UI
+├── launch_mastermenu.sh # Preferred entry point for the UI
+├── requirements.txt     # PySide6 + PyYAML deps
+└── src/                 # PySide6 application code
 ```
 
 ## Maintenance Notes
 
-- Use Maintenance Mode (toolbar toggle) for live edits. A reload button keeps the UI in sync with manual YAML edits if you prefer working in a text editor.
-- When adding icons later, drop art in the tool directory or use the “Change Icon…” action, which copies the selected file and updates the manifest.
-
-## Next Steps
-
-- Migrate remaining scripts into `apps/` following the existing pattern.
-- Swap placeholder icons for bespoke art once available.
-- Extend maintenance tooling (drag-and-drop ordering, validation, etc.) as needs evolve.
+- Prefer `scripts/new-tool.sh <tool-id> [--with-wrapper]` when adding entries; it updates manifests and optional `bin/` wrappers automatically.
+- Run `scripts/doctor.sh` before committing to catch missing icons, non-executable `run.sh`, or syntax errors.
+- If you expose wrappers system-wide, add `$(pwd)/bin` to your `PATH` and re-run `scripts/update-wrappers.sh` whenever manifests change.
+- Use **Reload Configuration** in the UI after editing YAML by hand; backups are created automatically under `backups/`.
+- Periodically prune run artifacts with `bin/mastermenu-clean --dry-run` to preview deletions, then schedule it (cron/anacron) with an appropriate `--keep-days` value.

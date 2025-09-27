@@ -34,7 +34,7 @@ MasterMenu/
 ## Runtime Modes & Entry Points
 
 - **MasterMenu** launches `run.sh` directly. The Qt launcher sets `MASTERMENU_WORKDIR` per run (see Storage Strategy).
-- **CLI/IDE** usage relies on PATH-exposed wrappers under `bin/`:
+- **CLI/IDE** usage relies on PATH-exposed wrappers under `bin/` (export with `export PATH="$(pwd)/bin:$PATH"`):
   
   ```bash
   #!/usr/bin/env bash
@@ -77,7 +77,7 @@ MasterMenu/
 
 ## Maintenance & Automation
 
-- Continuous hygiene: `bin/mastermenu-clean`, backup rotation in `backups/`, and a `scripts/doctor.sh` that validates manifests, icons, and executable bits.
+- Continuous hygiene: `bin/mastermenu-clean` (default 14-day retention with dry-run flag), backup rotation in `backups/`, and a `scripts/doctor.sh` that validates manifests, icons, and executable bits.
 - Add CI hooks (even simple shell scripts) to lint `app.yaml` schemas, verify `run.sh` executability, and ensure `launch_mastermenu.sh` still boots.
 - Encourage a quarterly review: audit tool usefulness, delete stale folders, update icons, refresh READMEs.
 

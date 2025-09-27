@@ -1,14 +1,20 @@
 # Create Virtualenv
 
-Prompts for a target directory and optional virtualenv name, then runs `python3 -m venv` and upgrades pip. Ideal for quickly provisioning an isolated interpreter before installing project-specific dependencies.
+## Overview
+Prompt for a directory and optional virtualenv name, then run `python3 -m venv` plus `pip install --upgrade pip`.
 
-## Usage
+## Setup
+- Requires system `python3` with the `venv` module.
+- Prompts gather the target directory and folder name.
 
-1. Launch the tool and select the folder where the environment should live (existing projects are fine).
-2. Provide a name for the virtualenv directory or keep the default `.venv`.
-3. A terminal window appears and executes the setup. Close it when the command finishes.
+## Storage & Output
+- Virtualenv is created in the destination you choose (default `.venv`).
+- `OUTPUT_ROOT` defaults to `MASTERMENU_WORKDIR` or `apps/venv-create/data/`; the tool itself does not write additional files.
+
+## CLI Usage
+- Launch from MasterMenu or run `apps/venv-create/run.sh`.
+- Automate with `bin/venv-create.sh <target-dir> [venv-name]`. PATH wrappers will expose `venv-create` after regeneration.
 
 ## Notes
-
-- No additional packages are installed—activate the environment later and `pip install` what you need.
-- Re-running with the same target/venv name will reuse the folder; delete it manually to start fresh.
+- Re-running with the same path reuses the environment; delete it to start fresh.
+- Install project dependencies manually after the virtualenv is created.

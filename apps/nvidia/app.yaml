@@ -19,3 +19,4 @@ venv:
 tags:
 - gpu
 - monitoring
+- cli

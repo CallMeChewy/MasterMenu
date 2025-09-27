@@ -1,14 +1,20 @@
 # Initialize Git Repo
 
-Select an existing folder and this tool will run `git init`, rename the default branch to `main`, and create empty `README.md` and `.gitignore` files.
+## Overview
+Turn an existing folder into a Git repository: run `git init`, set the default branch to `main`, and stub `README.md`/`.gitignore` files.
 
-## Usage
+## Setup
+- Requires Git installed and available on PATH.
+- Prompts gather the target directory; no configuration files are needed.
 
-1. Launch the tool and browse to the project folder you want under version control.
-2. A terminal window confirms each step (init, branch rename, file creation).
-3. Begin committing work immediately—stage the generated files or replace them with richer content.
+## Storage & Output
+- Operates directly on the chosen directory (creates `.git`, README, `.gitignore`).
+- `OUTPUT_ROOT` defaults to `MASTERMENU_WORKDIR` or `apps/git-init/data/`; the script does not persist additional files there.
+
+## CLI Usage
+- Launch via MasterMenu or run `apps/git-init/run.sh`.
+- Run headless by calling `bin/git-init.sh /path/to/project` (wrappers expose `git-init` on PATH once regenerated).
 
 ## Notes
-
-- Existing Git repositories are left untouched; the script will still run but `git init` reports the directory is already initialised.
-- Update the generated `.gitignore` with project-specific patterns after the initial commit.
+- Existing repositories remain untouched; `git init` simply reports the current state.
+- Edit the generated `.gitignore` to suit the project immediately after scaffolding.

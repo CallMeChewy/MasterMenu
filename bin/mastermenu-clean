@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat <<USAGE
+Usage: $(basename "$0") [--keep-days N] [--dry-run] [workdir]
+
+Prunes MasterMenu-managed work directories (default: ~/.local/share/mastermenu)
+by deleting run folders older than N days (default 14) and clearing stale tmp/
+subdirectories.
+USAGE
+}
+
+KEEP_DAYS=14
+DRY_RUN=0
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --help|-h)
+      usage
+      exit 0
+      ;;
+    --keep-days)
+      KEEP_DAYS=${2-}
+      shift 2
+      ;;
+    --dry-run)
+      DRY_RUN=1
+      shift
+      ;;
+    --*)
+      echo "Unknown option: $1" >&2
+      exit 1
+      ;;
+    *)
+      break
+      ;;
+  esac
+done
+
+ROOT="${1:-$HOME/.local/share/mastermenu}"
+if [[ ! -d "$ROOT" ]]; then
+  echo "Nothing to clean under $ROOT" >&2
+  exit 0
+fi
+
+if ! [[ $KEEP_DAYS =~ ^[0-9]+$ ]]; then
+  echo "Invalid --keep-days value: $KEEP_DAYS" >&2
+  exit 1
+fi
+
+FIND_OPTS=(-mindepth 1 -mtime "+$KEEP_DAYS")
+
+if [[ $DRY_RUN -eq 1 ]]; then
+  echo "[dry-run] Would remove the following items older than $KEEP_DAYS days under $ROOT:"
+  find "$ROOT" "${FIND_OPTS[@]}" -print
+  exit 0
+fi
+
+find "$ROOT" "${FIND_OPTS[@]}" -exec rm -rf {} +
+echo "Removed items older than $KEEP_DAYS days under $ROOT"

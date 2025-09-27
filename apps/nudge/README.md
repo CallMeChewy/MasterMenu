@@ -1,14 +1,20 @@
 # Save State Nudge
 
-Runs a simple timer that reminds you to save your session notes. Set the interval in minutes when launching from the menu.
+## Overview
+Start a loop that periodically prints a reminder message to save work. Choose the interval in minutes at launch.
 
-## Usage
+## Setup
+- No dependencies beyond standard shell utilities. Optional Zenity or Tk prompts improve the UX.
+- The interval defaults to 30 minutes but can be overridden via prompt or `NUDGE_INTERVAL_MINUTES` env var.
 
-1. Enter the desired interval (default 30 minutes) when prompted.
-2. A terminal window prints a reminder message after each interval along with the current timestamp.
-3. Close the terminal or press `Ctrl+C` to stop the loop.
+## Storage & Output
+- Emits reminders to the terminal; no files are written.
+- `OUTPUT_ROOT`/`TMP_ROOT` directories are initialised and can be cleared if unused.
+
+## CLI Usage
+- Launch via MasterMenu or run `apps/nudge/run.sh`.
+- For scripting, set `NUDGE_INTERVAL_MINUTES` and call `bin/nudge.sh`; wrappers will expose `nudge` on PATH after regeneration.
 
 ## Tips
-
-- Predefine the interval by exporting `NUDGE_INTERVAL_MINUTES` before launching.
-- Point the terminal output to a log file if you want an audit trail of reminders.
+- Redirect stdout to a log file if you want an audit trail (`bin/nudge.sh >> reminders.log`).
+- Stop the loop with `Ctrl+C` or by closing the terminal.

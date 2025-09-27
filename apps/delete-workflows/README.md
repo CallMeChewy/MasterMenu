@@ -1,19 +1,20 @@
 # Purge GitHub Workflow Runs
 
-Bulk delete GitHub Actions workflow runs for a repository. The script prompts for the target repo (defaulting to `CallMeChewy/AndyLibrary`) and asks for confirmation before removing runs via the GitHub CLI.
+## Overview
+Bulk delete GitHub Actions workflow runs for a specified repository using the GitHub CLI.
 
-## Usage
+## Setup
+- Requires GitHub CLI (`gh`) installed and authenticated (`gh auth login`).
+- Provide the `owner/repo` string when prompted.
 
-1. Launch the tool and enter the `owner/repo` string when prompted.
-2. Confirm the destructive action.
-3. A terminal window enumerates each workflow run and deletes it via `gh api` calls.
+## Storage & Output
+- No local files are created; all output streams to the terminal.
+- `OUTPUT_ROOT`/`TMP_ROOT` directories are initialised but unused and can be pruned.
 
-## Requirements
-
-- GitHub CLI (`gh`) installed and authenticated (`gh auth login`).
-- Sufficient permissions to delete workflow history for the repository.
+## CLI Usage
+- Launch from MasterMenu or run `apps/delete-workflows/run.sh`.
+- Direct invocation: `bin/delete-workflows.sh <owner/repo>` with optional flags for dry runs. Wrappers will expose `delete-workflows` on PATH after regeneration.
 
 ## Safety
-
-- The script loops until no runs remain. Stop the terminal if you entered the wrong repository.
-- Consider exporting metrics or audit information before wiping the history.
+- The script loops until GitHub reports no remaining runs. Abort the terminal if you selected the wrong repository.
+- Export audit data before purging if you need historical metrics.

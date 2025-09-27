@@ -5,40 +5,34 @@ tabs:
   - id: env_tools
     name: Environment & Scaffolding
     items:
-    - venv-create
-    - git-init
-    - ai-project
     - ai-env
+    - ai-project
+    - py-project
+    - venv-create
   - id: project_automation
     name: Project Automation
-    items: []
+    items:
+    - git-init
+    - new-proj
+    - backup-project
   - id: ai_ops
     name: AI & Ollama Ops
-    items: []
+    items:
+    - ai-services
   - id: search_nav
     name: Search & Navigation
     items:
     - ff
-  - id: system_utils
-    name: System & Utilities
-    items:
-    - backup-project
-  - id: UnAssigned
-    name: UnAssigned
-    items:
-    - new-proj
-    - ai-services
-    - timer
-  - id: UnSure
-    name: Unsure
-    items:
-    - py-project
-  - id: Monitors
-    name: Monitors
+  - id: monitors
+    name: Monitors & Alerts
     items:
     - nvidia
     - nudge
-  - id: Dangerous
+  - id: productivity
+    name: Productivity
+    items:
+    - timer
+  - id: dangerous
     name: Dangerous
     items:
     - delete-workflows

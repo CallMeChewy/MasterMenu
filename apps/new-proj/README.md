@@ -1,14 +1,20 @@
 # Launch Project Startup
 
-Launches the external Project_Startup PySide application after searching for the repository in several common locations (inside `MasterMenu`, as a sibling directory, or on the Desktop).
+## Overview
+Locate the external `Project_Startup` repository and launch its PySide application, optionally forwarding command-line arguments.
 
-## Usage
+## Setup
+- Requires the `Project_Startup` project cloned locally; the script checks common paths but you can update them in `run.sh`.
+- Depends on system `python3` and whatever packages `Project_Startup` requires.
 
-1. Enable Maintenance Mode if you need to adjust the command, otherwise just launch the tool.
-2. When prompted, provide optional CLI arguments (leave blank for the default workflow).
-3. The script locates Project_Startup and opens a terminal to run `python src/main.py`.
+## Storage & Output
+- No artifacts are written under `OUTPUT_ROOT`; the launched app handles its own storage.
+- Error dialogs surface when the repository cannot be found.
+
+## CLI Usage
+- Launch from MasterMenu or run `apps/new-proj/run.sh`.
+- To bypass prompts, call `bin/new-proj.sh -- <args>` once wrappers are regenerated; optional CLI arguments are forwarded to the downstream app.
 
 ## Troubleshooting
-
-- If the repository cannot be located, you’ll see an error dialog. Move or symlink Project_Startup into one of the expected locations and rerun.
-- Add new search paths by editing `apps/new-proj/run.sh` once you settle on a permanent directory layout.
+- If the repository path changes, add it to the search list near the top of `run.sh`.
+- Ensure `Project_Startup` dependencies are installed before launching.

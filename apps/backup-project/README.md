@@ -1,14 +1,21 @@
 # Project Backup
 
-Choose a project directory and copy it into `~/Desktop/Projects_Backup` with a timestamp suffix. Use this for manual checkpoints before risky changes.
+## Overview
+Create a timestamped copy of a project directory under `~/Desktop/Projects_Backup`. Useful for manual restore points before big changes.
 
-## Usage
+## Setup
+- Relies on `rsync` (or `cp -r` depending on the implementation in `bin/backup-project.sh`).
+- No configuration files; prompts gather the source directory.
 
-1. Launch the tool and select the project folder you want to snapshot.
-2. The script mirrors the directory into `~/Desktop/Projects_Backup/<name>_<timestamp>`.
-3. A terminal window prints the destination path when the copy completes.
+## Storage & Output
+- Destination path: `~/Desktop/Projects_Backup/<name>_<timestamp>`.
+- `OUTPUT_ROOT` defaults to `MASTERMENU_WORKDIR` or `apps/backup-project/data/` but is only used for transient logs; `$OUTPUT_ROOT/tmp` can be cleared safely.
+- Backed-up data persists until you delete it manually.
+
+## CLI Usage
+- Run from the menu or execute `apps/backup-project/run.sh`.
+- Non-interactive usage: `bin/backup-project.sh /path/to/project` (optionally pass a custom destination). Wrappers will expose `backup-project` on PATH after regeneration.
 
 ## Notes
-
-- Backups are full copies, so large projects take longer and consume disk space. Prune the backup folder periodically.
-- Pass a path argument when launching from the CLI (`bash run.sh /path/to/project`) to automate backups for scripts.
+- Large projects take time and disk space. Periodically trim `~/Desktop/Projects_Backup`.
+- Automate routine backups via cron by calling the wrapper with explicit arguments.

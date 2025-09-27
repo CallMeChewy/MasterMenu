@@ -1,19 +1,24 @@
 # Bootstrap AI Project
 
-Creates a new project directory with PySide6 boilerplate, LangChain-friendly dependencies, and an initialized Git repository. Run this when you want a fully provisioned desktop AI starter app.
+## Overview
+Scaffold a PySide6/LangChain desktop starter app: creates a project folder, provisions a virtualenv with baseline dependencies, and initialises a Git repository.
 
-## What You Get
+## Setup
+- Requires `python3`, `git`, and internet access for dependency installation.
+- No configuration files needed; prompts gather project name and destination.
 
-- `src/main.py` with a minimal PySide6 window
-- `tests/` and `docs/` folders plus README/requirements boilerplate
-- `.venv` populated with PySide6, requests, langchain-ollama, langchain-core
-- Git repository initialised with `main` as the default branch
+## Storage & Output
+- Generates the project tree in the directory you select (`<parent>/<project-name>`).
+- `OUTPUT_ROOT` defaults to `MASTERMENU_WORKDIR` or `apps/ai-project/data/` and currently only hosts transient logs; `$OUTPUT_ROOT/tmp` is safe to prune.
+- The script itself does not modify existing repositories beyond running `git init` if invoked inside one.
 
-## Usage
+## CLI Usage
+- Launch from MasterMenu or call `apps/ai-project/run.sh` to walk through the prompts.
+- Under the hood, `bin/ai-project.sh` accepts positional arguments: `bin/ai-project <parent-dir> <project-name>`. Wrappers will expose `ai-project` on PATH after `scripts/update-wrappers.sh` runs.
 
-1. Launch the tool and provide the project name.
-2. Choose the parent directory (Desktop is suggested by default).
-3. Confirm overwriting if the folder already exists.
-4. A terminal window provisions the tree, sets up the virtualenv, installs packages, runs `git init`, and prints a final `tree` listing when available.
+## Deliverables
+- `src/main.py`, `tests/`, `docs/`, README template, and requirements file.
+- `.venv` populated with PySide6, requests, langchain-ollama, langchain-core.
+- Git repository with `main` as the default branch.
 
-After completion, open the new folder in your editor of choice and activate the environment with `source .venv/bin/activate`.
+After provisioning, `cd` into the project and activate the environment with `source .venv/bin/activate` to continue development.

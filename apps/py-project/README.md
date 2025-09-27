@@ -1,16 +1,20 @@
 # Bootstrap Python Project
 
-Creates a simple Python project structure with `src`, `tests`, and `docs` folders plus starter files. Choose a project name and parent directory when launching; the tool will populate the folder using sensible defaults without setting up a virtualenv.
+## Overview
+Scaffold a lightweight Python project (no virtualenv) with `src/`, `tests/`, docs, and boilerplate files.
+
+## Setup
+- Requires `python3` for basic scripting and standard Unix utilities (`mkdir`, `cp`, etc.).
+- Prompts collect the project name and destination folder.
+
+## Storage & Output
+- Generates project files within the selected directory.
+- `OUTPUT_ROOT` defaults to `MASTERMENU_WORKDIR` or `apps/py-project/data/`; no additional files are written there.
+
+## CLI Usage
+- Launch from the menu or run `apps/py-project/run.sh`.
+- Use `bin/py-project.sh <parent-dir> <project-name>` for automation; wrappers will expose `py-project` on PATH after regeneration.
 
 ## Generated Files
-
-- `README.md` and `requirements.txt`
-- `src/__init__.py` and `tests/__init__.py`
-- `.gitignore` tuned for Python projects
-
-## Usage
-
-1. Launch and enter a project name.
-2. Pick the parent folder that should contain the new project.
-3. Confirm any overwrite prompt if the folder already exists.
-4. A terminal window shows the created tree (if `tree` is installed) so you can inspect the result immediately.
+- `README.md`, `requirements.txt`, `.gitignore` tuned for Python.
+- `src/__init__.py` and `tests/__init__.py` plus placeholder directories.

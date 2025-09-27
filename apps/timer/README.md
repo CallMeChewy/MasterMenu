@@ -1,15 +1,20 @@
 # Desktop Reminder Timer
 
-Launches the Tk-based reminder application that ships with this repository. The script spawns the GUI in the background so the menu remains usable.
+## Overview
+Launch the bundled Tk reminder app in the background so MasterMenu stays available.
 
-## Usage
+## Setup
+- Optional: install `playsound` into the tool’s `.venv` for audio alerts.
+- Configure interval, message, and audio file inside the GUI.
 
-1. Set the interval (minutes), reminder message, and audio file path inside the GUI.
-2. Click **Start Reminder** to begin the loop; you’ll receive a dialog and optional sound every interval.
-3. Use **Stop Reminder** when you’re done.
+## Storage & Output
+- The app stores preferences in memory only; no files are created.
+- When run from MasterMenu, `OUTPUT_ROOT`/`TMP_ROOT` resolve to the run directory but remain unused.
 
-## Requirements & Tips
+## CLI Usage
+- Launch from MasterMenu or call `apps/timer/run.sh` to open the GUI.
+- This tool is not exposed as a CLI wrapper by default since it requires user interaction.
 
-- Install `playsound` inside `.venv` if audio cues are missing: `pip install playsound`.
-- A default `Do Something.wav` lives alongside the script; swap it for any `.wav`/`.mp3` file via the browse button.
-- Close the reminder window to exit entirely; the menu process stays untouched.
+## Usage Tips
+- Click **Start Reminder** to begin; reminders show as dialogs and optional sounds.
+- Stop via **Stop Reminder** or close the window when finished.

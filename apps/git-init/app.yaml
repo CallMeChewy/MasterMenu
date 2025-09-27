@@ -20,3 +20,4 @@ venv:
 tags:
 - git
 - setup
+- cli

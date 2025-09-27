@@ -23,6 +23,8 @@ APP_DIR=\"{app_dir}\"
 exec \"${{APP_DIR}}/run.sh\" \"$@\"
 """
 
+PRESERVE_FILES = {"mastermenu-clean"}
+
 
 def find_cli_tools(apps_dir: Path) -> Iterable[tuple[str, Path]]:
     for entry in sorted(apps_dir.iterdir()):
@@ -49,12 +51,17 @@ def find_cli_tools(apps_dir: Path) -> Iterable[tuple[str, Path]]:
 def write_wrapper(wrapper_dir: Path, tool_id: str, app_dir: Path) -> None:
     wrapper_path = wrapper_dir / tool_id
     wrapper_path.write_text(WRAPPER_TEMPLATE.format(app_dir=app_dir.as_posix()))
-    wrapper_path.chmod(wrapper_path.stat().st_mode | stat.S_IEXEC)
+    wrapper_path.chmod(0o755)
 
 
 def remove_stale_wrappers(wrapper_dir: Path, valid_ids: set[str]) -> None:
     for wrapper in wrapper_dir.iterdir():
-        if wrapper.is_file() and os.access(wrapper, os.X_OK) and wrapper.name not in valid_ids:
+        if (
+            wrapper.is_file()
+            and os.access(wrapper, os.X_OK)
+            and wrapper.name not in valid_ids
+            and wrapper.name not in PRESERVE_FILES
+        ):
             wrapper.unlink()
 
 

@@ -1,14 +1,20 @@
 # GPU Monitor
 
-Launches a terminal window that runs `watch -n 1 nvidia-smi` so you can track GPU utilisation, memory pressure, and active processes.
+## Overview
+Open a terminal running `watch nvidia-smi` to monitor GPU utilisation, memory, and active processes.
 
-## Usage
+## Setup
+- Requires NVIDIA drivers and the `nvidia-smi` CLI.
+- Optional: set `NVIDIA_INTERVAL_SECONDS` to change the refresh rate (default 1s).
 
-- Run the tool to open a dedicated terminal displaying the `nvidia-smi` output.
-- Press `Ctrl+C` or close the terminal window when finished.
-- Set `NVIDIA_INTERVAL_SECONDS` to change the refresh cadence (e.g., `export NVIDIA_INTERVAL_SECONDS=5`).
+## Storage & Output
+- No files are created; output streams live in the terminal.
+- `OUTPUT_ROOT`/`TMP_ROOT` directories are initialised but unused.
+
+## CLI Usage
+- Launch from MasterMenu or run `apps/nvidia/run.sh`.
+- Execute `bin/nvidia.sh` directly (wrappers expose `nvidia` on PATH after regeneration) to start the monitor from any shell.
 
 ## Notes
-
-- Requires NVIDIA drivers plus the `nvidia-smi` CLI bundled with them.
-- Falls back to the current shell if `gnome-terminal` is unavailable; adjust the launcher script if you prefer another terminal emulator.
+- Falls back to the current shell when `gnome-terminal` is unavailable—tune the launcher if you prefer a different terminal emulator.
+- Stop monitoring with `Ctrl+C` or by closing the window.
