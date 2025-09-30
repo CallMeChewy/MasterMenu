@@ -1,0 +1,4 @@
+
+This document contains information about Python programming.
+It includes examples of functions and classes.
+The content is designed for educational purposes.

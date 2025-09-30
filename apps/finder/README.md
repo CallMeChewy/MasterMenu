@@ -1,16 +1,21 @@
 # Finder Utility
 
 ## Overview
-Launch the Finder desktop search utility implemented in Python.
+Finder is now bundled directly inside MasterMenu. It provides multi-variable
+logical searches across files, inline formula validation (with green/yellow
+visual feedback), test-suite driven examples, and per-variable case controls.
 
 ## Setup
-- Depends on the external Finder project at `/home/herb/Desktop/Finder` and the `~/.pyenv/shims/python` interpreter.
-- No virtualenv is managed here; the Finder project supplies its own dependencies.
+- Optional virtualenv: create `apps/finder/.venv` and `pip install -r apps/finder/requirements.txt`.
+- Otherwise ensure the root `.venv` or system Python includes `PySide6` and the
+  few helper packages listed in `requirements.txt`.
 
 ## Storage & Output
-- MasterMenu sets `OUTPUT_ROOT` to `~/.local/share/mastermenu/finder/<timestamp>/`, though the tool does not write to that directory by default.
-- Finder itself handles any caching/logs inside its project folder.
+- `OUTPUT_ROOT` / `TMP_ROOT` default to `~/.local/share/mastermenu/finder/<ts>`
+  like other tools; Finder mostly writes to stdout/GUI.
+- The educational suites generate content in-memory only. No Desktop checkout is
+  required anymore.
 
 ## CLI Usage
-- Launch from MasterMenu or run `bin/finder` once `$(pwd)/bin` is on your PATH.
-- Additional arguments are forwarded to `Finder.py` if the script supports them.
+- Launch from MasterMenu or run `bin/finder` once `$(pwd)/bin` is on your PATH`.
+- All CLI arguments are forwarded to the underlying `Finder.py` script.

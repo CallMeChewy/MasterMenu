@@ -1,0 +1,4 @@
+
+This file discusses Java programming concepts.
+It covers object-oriented programming principles.
+The material is suitable for intermediate learners.

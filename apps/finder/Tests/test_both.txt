@@ -1,0 +1,4 @@
+
+This text covers both Python and Java programming.
+It compares features between the two languages.
+The content is comprehensive and well-structured.
