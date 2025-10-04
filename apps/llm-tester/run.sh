@@ -230,9 +230,18 @@ run_application() {
     # Launch in terminal if available, otherwise execute directly
     local cmd=("$python_bin" "$app_script" "$@")
 
-    if command -v gnome-terminal >/dev/null 2>&1 && [[ -z "${MASTERMENU_TERMINAL:-}" ]]; then
+    # MasterMenu integration: prefer direct execution when in MasterMenu environment
+    if [[ -n "${MASTERMENU_TERMINAL:-}" ]] || [[ -n "${MASTERMENU_WORKDIR:-}" ]]; then
+        # Running from MasterMenu - execute directly
+        log "Launching from MasterMenu environment"
+        exec "${cmd[@]}"
+    elif command -v gnome-terminal >/dev/null 2>&1; then
+        # Standalone execution - use terminal
+        log "Launching in new terminal window"
         gnome-terminal -- bash -lc "$(printf '%q ' "${cmd[@]}")" &
     else
+        # Fallback to direct execution
+        log "Launching directly (no terminal available)"
         exec "${cmd[@]}"
     fi
 }

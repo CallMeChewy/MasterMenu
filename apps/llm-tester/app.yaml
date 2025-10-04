@@ -7,7 +7,7 @@ command:
 cwd: .
 env: {}
 icon: icon.svg
-category: unassigned
+category: Good To Go
 notes: 'Relocatable LLM-Tester Enhanced v2.0 with comprehensive parameter optimization lab.
 
   Features include: model library, test suites, parameter presets, real-time monitoring,
