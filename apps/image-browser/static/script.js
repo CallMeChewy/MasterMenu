@@ -107,6 +107,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 item.className = 'grid-item';
 
                 const folderImg = document.createElement('img');
+                folderImg.alt = 'Folder background';
+                folderImg.loading = 'lazy';
 
                 // Replace default folder image if showing existing icons
                 if (showExistingIcons && existingIconPath) {
@@ -115,12 +117,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     folderImg.src = '/static/folder.svg';
                     folderImg.className = 'folder-background';
-                }
 
-                // Apply current color picker setting to new folder images
-                const currentColor = localStorage.getItem('currentFolderColor') || '#FFB74D';
-                if (!showExistingIcons || !existingIconPath) {
-                    // Only apply color filter to default folder SVG, not custom icons
+                    // Apply current color picker setting to new folder images
+                    const currentColor = localStorage.getItem('currentFolderColor') || '#FFB74D';
                     folderImg.style.filter = `hue-rotate(${getHueRotation(currentColor)}deg) saturate(1.5)`;
                 }
 
@@ -129,6 +128,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 iconImg.src = `/images/${imageName}?dir=${encodeURIComponent(data.image_dir)}`;
                 iconImg.alt = imageName;
                 iconImg.className = 'icon-image';
+                iconImg.loading = 'lazy';
+
+                // Add error handling for image loading
+                iconImg.onerror = function() {
+                    console.warn('Failed to load image:', imagePath);
+                    this.style.display = 'none';
+                };
+
+                folderImg.onerror = function() {
+                    console.warn('Failed to load folder background:', this.src);
+                    this.style.display = 'none';
+                };
 
                 item.appendChild(folderImg);
                 item.appendChild(iconImg);

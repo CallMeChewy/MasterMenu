@@ -50,11 +50,19 @@ body {
 .grid-item {
     position: relative;
     background-color: transparent;
-    border: none;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
     padding: 0;
     text-align: center;
     cursor: pointer;
     height: 150px; /* Adjust as needed */
+    transition: all 0.2s ease;
+}
+
+.grid-item:hover {
+    border-color: rgba(255,255,255,0.3);
+    background-color: rgba(255,255,255,0.05);
+    transform: scale(1.02);
 }
 
 .grid-item .folder-background {
@@ -65,6 +73,7 @@ body {
     top: 0;
     left: 0;
     z-index: 1;
+    pointer-events: none;
 }
 
 .grid-item .icon-image {
@@ -72,9 +81,18 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 60%;
-    max-height: 60%;
+    max-width: 50%;
+    max-height: 50%;
     z-index: 2;
+    pointer-events: none;
+    border-radius: 4px;
+    background-color: rgba(255,255,255,0.1);
+    padding: 2px;
+}
+
+.grid-item .folder-background.existing-icon {
+    object-fit: cover;
+    border-radius: 8px;
 }
 
 .loading-spinner {
