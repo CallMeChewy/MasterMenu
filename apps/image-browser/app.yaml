@@ -1,0 +1,42 @@
+# File: app.yaml
+# Path: /home/herb/Desktop/MasterMenu/apps/image-browser/app.yaml
+# Standard: AIDEV-PascalCase-2.1
+# Created: 2025-10-04
+# Last Modified: 2025-10-04 04:20PM
+
+id: image-browser
+name: Image Browser
+synopsis: Web-based image browser with folder icon customization
+version: 1.0.0
+
+description: |
+  A Flask-based web application that allows browsing image directories and setting custom folder icons.
+  Features automatic port discovery, modern web interface, and support for multiple image formats.
+
+command:
+  - python3
+  - app.py
+
+cwd: /home/herb/Desktop/MasterMenu/apps/image-browser
+
+env:
+  PYTHONPATH: /home/herb/Desktop/MasterMenu/apps/image-browser
+
+icon: icon.png
+
+tags:
+  - web
+  - image
+  - file-manager
+  - graphics
+
+venv:
+  path: .venv
+  auto_create: true
+
+requirements:
+  - Flask
+  - waitress
+
+author: Herb
+license: MIT

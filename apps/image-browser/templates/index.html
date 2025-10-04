@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icon Changer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <div class="control-group">
+                <label>Image Directory:</label>
+                <button id="select-img-dir-btn">Browse</button>
+                <span id="img-dir-path">/home/herb/Desktop/SVGs/</span>
+            </div>
+            <div class="control-group">
+                <label>Target Folder:</label>
+                <button id="select-target-folder-btn">Browse</button>
+                <span id="target-folder-path"></span>
+                <div id="current-folder-icon" class="folder-icon-preview" style="display: none;">
+                    <span>Current icon:</span>
+                    <img id="current-icon-img" src="" alt="Current folder icon" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label>Folder Background Color:</label>
+                <input type="color" id="folder-color-picker" value="#FFB74D" />
+                <button id="reset-color-btn">Reset</button>
+            </div>
+        </div>
+        <div id="image-grid" class="grid-container"></div>
+        <div id="loading" class="loading-spinner" style="display: none;"></div>
+    </div>
+
+    <div id="confirm-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <p id="modal-text"></p>
+            <div class="modal-buttons">
+                <button id="confirm-btn">Confirm</button>
+                <button id="cancel-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="browse-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3 id="browse-path">/</h3>
+            <div id="browse-list"></div>
+            <div class="modal-buttons">
+                <button id="browse-select-btn">Select</button>
+                <button id="browse-cancel-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

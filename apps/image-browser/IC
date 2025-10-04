@@ -1,0 +1,65 @@
+#!/bin/bash
+# File: IconChanger
+# Path: /home/herb/Desktop/### SH  ###/.bash_functions/IconChanger
+# Standard: AIDEV-PascalCase-2.1
+# Created: 2025-01-25
+# Last Modified: 2025-01-25 12:30PM
+
+if ! command -v zenity &> /dev/null; then
+    echo "Zenity is not installed. Installing..."
+    sudo apt-get update && sudo apt-get install -y zenity
+fi
+
+SetFolderIcon() {
+    local Folder="$1"
+    local Icon="$2"
+    
+    if [ -d "$Folder" ] && [ -f "$Icon" ]; then
+        gio set "$Folder" metadata::custom-icon "file://$Icon"
+        if [ $? -eq 0 ]; then
+            zenity --info --text="Successfully set icon for $(basename "$Folder")" --width=300
+        else
+            zenity --error --text="Failed to set icon for $(basename "$Folder")" --width=300
+        fi
+    else
+        zenity --error --text="Invalid folder or icon path" --width=300
+    fi
+}
+
+while true; do
+    zenity --question \
+           --text="Would you like to set a custom folder icon?" \
+           --ok-label="Yes" \
+           --cancel-label="No" \
+           --width=300
+    
+    if [ $? -ne 0 ]; then
+        break
+    fi
+    
+    Folder=$(zenity --file-selection \
+                    --directory \
+                    --filename="$HOME/Desktop/" \
+                    --title="Select Folder" \
+                    --width=800 \
+                    --height=600)
+    
+    if [ -z "$Folder" ]; then
+        continue
+    fi
+    
+    Icon=$(zenity --file-selection \
+                  --filename="$HOME/Desktop/SVGs/" \
+                  --title="Select Icon (PNG or SVG)" \
+                  --file-filter="Images | *.png *.svg *.jpg *.jpeg" \
+                  --width=800 \
+                  --height=600)
+    
+    if [ -z "$Icon" ]; then
+        continue
+    fi
+    
+    SetFolderIcon "$Folder" "$Icon"
+done
+
+exit 0
