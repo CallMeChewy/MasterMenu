@@ -117,6 +117,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     folderImg.className = 'folder-background';
                 }
 
+                // Apply current color picker setting to new folder images
+                const currentColor = localStorage.getItem('currentFolderColor') || '#FFB74D';
+                if (!showExistingIcons || !existingIconPath) {
+                    // Only apply color filter to default folder SVG, not custom icons
+                    folderImg.style.filter = `hue-rotate(${getHueRotation(currentColor)}deg) saturate(1.5)`;
+                }
+
                 const iconImg = document.createElement('img');
                 const imagePath = `${data.image_dir}/${imageName}`;
                 iconImg.src = `/images/${imageName}?dir=${encodeURIComponent(data.image_dir)}`;
@@ -211,6 +218,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // Apply color filter to the SVG folder
             img.style.filter = `hue-rotate(${getHueRotation(color)}deg) saturate(1.5)`;
         });
+
+        // Store the current color so it can be applied to new images
+        localStorage.setItem('currentFolderColor', color);
     }
 
     function getHueRotation(hexColor) {
@@ -304,12 +314,19 @@ document.addEventListener('DOMContentLoaded', () => {
     resetColorBtn.addEventListener('click', () => {
         folderColorPicker.value = '#FFB74D';
         updateFolderColor('#FFB74D');
+        localStorage.removeItem('currentFolderColor');
     });
 
     window.addEventListener('beforeunload', () => {
         navigator.sendBeacon('/api/disconnect');
     });
 
-    // Initial load
+    // Initial load - restore stored color if any
+    const storedColor = localStorage.getItem('currentFolderColor');
+    if (storedColor) {
+        folderColorPicker.value = storedColor;
+        updateFolderColor(storedColor);
+    }
+
     fetchImages(imgDirPath.textContent);
 });
