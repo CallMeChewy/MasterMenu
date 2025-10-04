@@ -4,7 +4,7 @@ synopsis: Advanced LLM testing and parameter optimization platform with visualiz
 command:
 - bash
 - ./run.sh
-cwd: .
+cwd: /home/herb/Desktop/MasterMenu/apps/llm-tester
 env: {}
 icon: icon.svg
 category: Good To Go
