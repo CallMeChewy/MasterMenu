@@ -1,0 +1,187 @@
+# File: config.yaml
+# Path: /home/herb/Desktop/MasterMenu/apps/llm-tester/config/config.yaml
+# Standard: AIDEV-PascalCase-2.1
+# Created: 2025-10-04
+# Last Modified: 2025-10-04 6:45PM
+
+# LLM-Tester Configuration
+# Persistent configuration that survives device relocation
+
+application:
+  name: "LLM-Tester Enhanced"
+  version: "2.0.0"
+  description: "Advanced LLM testing and parameter optimization platform"
+
+# Data storage paths (relative to application root)
+paths:
+  # Core data directories
+  data_dir: "data"
+  db_dir: "db"
+  results_dir: "results"
+  logs_dir: "logs"
+  config_dir: "config"
+
+  # Source code
+  src_dir: "src"
+  lib_dir: "lib"
+  tools_dir: "tools"
+
+  # External data that can be symlinked
+  external_data: "data/external"
+  models_dir: "data/models"
+  exports_dir: "data/exports"
+
+# Database configuration
+database:
+  default: "db/llm_tester.db"
+  backup_enabled: true
+  backup_interval: 3600  # 1 hour
+  max_backups: 10
+
+# Model configurations
+models:
+  default_provider: "ollama"
+  timeout: 300  # 5 minutes
+  max_retries: 3
+
+  # Available models
+  available:
+    - id: "phi3:3.8b"
+      name: "Phi-3 Mini (3.8B)"
+      provider: "ollama"
+      context_limit: 4096
+      description: "Efficient small model for quick testing"
+
+    - id: "phi3:14b"
+      name: "Phi-3 Medium (14B)"
+      provider: "ollama"
+      context_limit: 8192
+      description: "Balanced model for quality testing"
+
+    - id: "llama3.1:8b"
+      name: "Llama 3.1 (8B)"
+      provider: "ollama"
+      context_limit: 128000
+      description: "Large context model"
+
+    - id: "qwen2.5:7b"
+      name: "Qwen 2.5 (7B)"
+      provider: "ollama"
+      context_limit: 32768
+      description: "Multilingual capable model"
+
+# Testing parameters
+testing:
+  default_parameters:
+    temperature: 0.7
+    num_ctx: 2048
+    num_predict: 512
+    repeat_penalty: 1.1
+    top_k: 25
+    top_p: 0.9
+
+  # Parameter ranges for optimization
+  optimization_ranges:
+    temperature: [0.1, 1.0, 0.1]  # [min, max, step]
+    num_ctx: [1024, 8192, 512]
+    num_predict: [256, 2048, 256]
+    repeat_penalty: [1.0, 1.3, 0.05]
+    top_k: [10, 50, 5]
+    top_p: [0.8, 1.0, 0.05]
+
+# Visualization settings
+visualization:
+  default_figsize: [8, 6]
+  dpi: 100
+  style: "seaborn-v0_8"
+  color_palette: "viridis"
+
+  # Graph settings
+  performance_landscape:
+    colormap: "viridis"
+    alpha: 0.8
+
+  optimization_path:
+    line_style: "-"
+    marker: "o"
+
+  parameter_heatmap:
+    cmap: "RdYlBu_r"
+
+  parallel_coordinates:
+    alpha: 0.7
+
+# Logging configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  max_file_size: "10MB"
+  backup_count: 5
+
+  # Loggers
+  loggers:
+    - name: "application"
+      file: "logs/app.log"
+
+    - name: "testing"
+      file: "logs/testing.log"
+
+    - name: "optimization"
+      file: "logs/optimization.log"
+
+    - name: "database"
+      file: "logs/database.log"
+
+# Export settings
+exports:
+  formats: ["json", "csv", "xlsx"]
+  auto_backup: true
+  compression: true
+
+  # Default export paths
+  optimization_results: "results/optimization"
+  test_results: "results/testing"
+  visualizations: "results/visualizations"
+
+# Performance monitoring
+monitoring:
+  enabled: true
+  interval: 5  # seconds
+  metrics:
+    - cpu_usage
+    - memory_usage
+    - gpu_usage
+    - response_time
+    - accuracy
+
+# UI Configuration
+ui:
+  theme: "default"
+  window_size: [1200, 800]
+  auto_save: true
+  refresh_interval: 1000  # milliseconds
+
+  # Tabs configuration
+  tabs:
+    testing:
+      enabled: true
+      position: 0
+
+    results:
+      enabled: true
+      position: 1
+
+    optimization:
+      enabled: true
+      position: 2
+
+    analytics:
+      enabled: true
+      position: 3
+
+# Security and validation
+security:
+  validate_inputs: true
+  sanitize_prompts: true
+  max_prompt_length: 10000
+  allowed_file_types: [".json", ".csv", ".txt", ".md"]

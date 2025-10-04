@@ -1,0 +1,26 @@
+{
+  "mastermenu_default": {
+    "description": "Default database for MasterMenu",
+    "path": "DB_Results/mastermenu_default.db",
+    "created_at": "2025-10-03T15:41:21.264281",
+    "last_updated": "2025-10-03T15:41:21.264288"
+  },
+  "default": {
+    "description": "Default standalone database",
+    "path": "DB_Results/default.db",
+    "created_at": "2025-10-03T19:14:43.830866",
+    "last_updated": "2025-10-03T19:14:43.830873"
+  },
+  "Am": {
+    "description": "",
+    "path": "DB_Results/Am.db",
+    "created_at": "2025-10-04T02:27:46.757772",
+    "last_updated": "2025-10-04T02:27:46.757777"
+  },
+  "Am1": {
+    "description": "",
+    "path": "DB_Results/Am1.db",
+    "created_at": "2025-10-04T03:21:43.102707",
+    "last_updated": "2025-10-04T03:21:43.102712"
+  }
+}

@@ -1,6 +1,6 @@
 id: llm-tester
-name: LLM Tester
-synopsis: Run the local LLM tester interface.
+name: LLM Tester Enhanced
+synopsis: Advanced LLM testing and parameter optimization platform with visualization.
 command:
 - bash
 - ./run.sh
@@ -8,15 +8,20 @@ cwd: .
 env: {}
 icon: icon.svg
 category: unassigned
-notes: 'Runs `/home/herb/.pyenv/shims/python /home/herb/Desktop/LLM-Tester/LLM-Tester.py`
+notes: 'Relocatable LLM-Tester Enhanced v2.0 with comprehensive parameter optimization lab.
 
-  (preferably in a new terminal window) after changing into the LLM-Tester project
+  Features include: model library, test suites, parameter presets, real-time monitoring,
+  exhaustive parameter optimization, multidimensional visualization, and persistent data storage.
 
-  directory. Make sure the external project remains installed and configured.'
+  Supports device relocation through symlinks and maintains data persistence across sessions.
+  Automatically detects and links to existing desktop data for seamless migration.'
 venv:
   path: .venv
-  auto_create: false
+  auto_create: true
 tags:
 - llm
 - testing
+- optimization
+- visualization
+- research
 - cli
